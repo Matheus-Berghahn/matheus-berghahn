@@ -1,0 +1,123 @@
+/* app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Fira+Code:wght@300..700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+  --font-fira-code: "Fira Code", monospace;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-bounce-subtle: bounce-subtle 2s ease-in-out infinite;
+  --animate-typewriter: typewriter 4s steps(40) 1s infinite;
+  --animate-cursor: cursor 0.75s step-end infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-white overflow-x-hidden;
+  }
+  
+  /* Seleção de texto com estilo */
+  ::selection {
+    @apply bg-white text-black;
+  }
+  
+  /* Estilo para código */
+  code, pre {
+    font-family: "Fira Code", monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Classes de fonte */
+  .font-dm-sans {
+    font-family: "DM Sans", sans-serif;
+  }
+  
+  .font-playfair {
+    font-family: "Playfair Display", serif;
+  }
+  
+  .font-fira-code {
+    font-family: "Fira Code", monospace;
+  }
+  
+  /* Efeitos de texto para código */
+  .text-code {
+    @apply font-fira-code tracking-tight;
+  }
+  
+  /* Efeito de máquina de escrever */
+  .typewriter {
+    @apply overflow-hidden whitespace-nowrap border-r-2 border-white;
+    animation: 
+      typewriter 4s steps(40) 1s 1 normal both,
+      cursor 0.75s step-end infinite;
+  }
+  
+  /* Gradientes */
+  .gradient-text {
+    @apply bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent;
+  }
+  
+  /* Efeitos de brilho para código */
+  .code-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3),
+                 0 0 20px rgba(255, 255, 255, 0.2),
+                 0 0 30px rgba(255, 255, 255, 0.1);
+  }
+}
